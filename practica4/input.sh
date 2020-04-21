@@ -15,8 +15,8 @@ iptables -A INPUT -s 172.18.0.3 -p tcp --dport 13 -j ACCEPT
 iptables -A INPUT -p tcp --dport 13 -j DROP
 
 # CAS 4: port 7 tancat al IP 172.18.0.4 però obert a xarxa docker
-iptables -A INPUT -p tcp --dport 7 -s 172.18.0.4 -j DROP
-iptables -A INPUT -p tcp --dport 7 -s 172.18.0.0/24 -j ACCEPT
+iptables -A INPUT -s 172.18.0.4 -p tcp --dport 7 -j DROP
+iptables -A INPUT -s 172.18.0.0/24 -p tcp --dport 7 -j ACCEPT
 iptables -A INPUT -p tcp --dport 7 -j DROP
 
 
