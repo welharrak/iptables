@@ -35,6 +35,12 @@ docker run --rm -h host --cap-add=NET_ADMIN --net mynet -it fedora:27 /bin/bash
 7. Podem accedir al port 7 de qualsevol destí
 
 ## established.sh
+- Identificar tràfic de resposta (RELATED, ESTABLISHED).
+
+1. Oferim el servei web però només permetem respostes a peticions establertes
+2. Permetem al host sortir a l'exterior, però no accepta connexions web.
+3. Deixem fer de tot al tràfic ja establert
+4. Obrim el nostre servei web a tothom menys a un host específic
 
 ## icmp.sh
 - Tràfic ICMP de ping request (8) i ping reply (0)
@@ -58,4 +64,8 @@ Activar NAT per a dues xarxes internes, en aquest cas xarxes docker:
 [isx48144165@walid ~]$ docker run --rm --name host2A -h host2A --net yournet --privileged -d welharrak/iptables
 [isx48144165@walid ~]$ docker run --rm --name host2B -h host2B --net yournet --privileged -d welharrak/iptables
 ```
+
+## forwarding.sh
+- Forwarding: router parla en nom dels hosts i els contesta les respostes
+
 
