@@ -72,4 +72,13 @@ Activar NAT per a dues xarxes internes, en aquest cas xarxes docker:
 4. Cap host de la d'una xarxa pot sortir des del port 7
 5. Evitar **spoofing**: des de dins de la LAN es falsifiqui ip origen
 
-## 
+## port-forwarding.sh
+
+- Port redirigeix a un altre port
+
+1. Dirigir tot el tràfic http a un altre host de la LAN
+2. Ports actuen com camins per accedir a serveis interns de la LAN
+3. Quan tràfic provingui d'un host enviar-lo a un altre host
+4. Quan tràfic provingui d'una xarxa enviar-lo a un host
+
+
