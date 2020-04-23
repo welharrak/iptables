@@ -15,7 +15,6 @@ docker run --rm -h host --cap-add=NET_ADMIN --net mynet -it fedora:27 /bin/bash
 
 ## input.sh
 - De fora a dins
-- Regles:
 
 1. Tanquem port per a qualsevol IP
 2. Tanquem port només a host (172.18.0.1) i obert a tothom
@@ -24,7 +23,6 @@ docker run --rm -h host --cap-add=NET_ADMIN --net mynet -it fedora:27 /bin/bash
 
 ## output.sh
 - De dins a fora
-- Regles:
 
 1. Accès total a qualsevol port (destí)
 2. Accès al port 7 de qualsevol host de la xarxa docker
@@ -68,4 +66,10 @@ Activar NAT per a dues xarxes internes, en aquest cas xarxes docker:
 ## forwarding.sh
 - Forwarding: router parla en nom dels hosts i els contesta les respostes
 
+1. Una xarxa no pot accedir a una altra xarxa externa
+2. Host 172.18.0.2 no pot accedir a una xarxa externa
+3. Xarxa no pot accedir al servei web de 172.18.0.2
+4. Cap host de la d'una xarxa pot sortir des del port 7
+5. Evitar **spoofing**: des de dins de la LAN es falsifiqui ip origen
 
+## 
