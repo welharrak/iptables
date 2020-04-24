@@ -81,4 +81,45 @@ Activar NAT per a dues xarxes internes, en aquest cas xarxes docker:
 3. Quan tràfic provingui d'un host enviar-lo a un altre host
 4. Quan tràfic provingui d'una xarxa enviar-lo a un host
 
+## dmz.sh
+- Demilitarized zone: xarxa local que es troba entre la xarxa interna i una xarxa externa
+
+1. La xarxa a només pot accedir del router als serveis ssh
+2. La xarxa a només pot accedir a l'exterior als serveis web
+3. la xarxa a només es pot accedir serveis web de la xarxa DMZ 
+4. Redirigir els ports perquè des de l'exterior es tingui accés a x ports de x hosts
+5. S'obre un port per accedir al port ssh del router si la ip origen és de host2A
+6. Els hosts de la xarxa b no tenen accès a la xarxa a
+
+- Simulació amb docker:
+```
+docker network create A B DMZ
+docker run --rm --name host1A -h host1A --net A --privileged -d welharrak/iptables
+docker run --rm --name host2B -h host2B --net A --privileged -d welharrak/iptables
+docker run --rm --name host1A -h host1A --net B --privileged -d welharrak/iptables
+docker run --rm --name host2B -h host2B --net B --privileged -d welharrak/iptables
+docker run --rm --name dmz1 -h dmz1 --net DMZ --privileged -d welharrak/iptables
+docker run --rm --name dmz2 -h dmz2 --net DMZ --privileged -d welharrak/ldapserver19:latest
+```
+
+## dmz-2.sh
+
+## drop.sh
+- Tanquem tot
+- Nomès deixem ports necesàris pel funcionament correcte de la màquina:
+1. dns(53)
+2. dhclient(68)
+3. ssh(22)
+4. rpc(111, 507)
+5. chronyd(123, 371)
+6. cups(631)
+7. xinetd(3411)
+8. postgresql(5432)
+9. x11forwarding(6010, 6011)
+10. avahi(368)
+11. alpes(462)
+12. tcpnethaspsrv(475)
+13. rxe(761)
+
+
 
