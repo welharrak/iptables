@@ -3,7 +3,7 @@
 # isx48144165
 # iptables DROP
 
-# Establim la politica per defecte
+# Establim la politica per defecte DROP
 iptables -P INPUT DROP
 iptables -P OUTPUT DROP
 iptables -P FORWARD DROP

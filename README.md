@@ -55,6 +55,7 @@ Activar NAT per a dues xarxes internes, en aquest cas xarxes docker:
 - Eliminar totes les regles de iptables aplicant l'script default.sh
 - Una vegada eliminades les regles, no tenen connexió a l'exterior. Haurem d'aplicar el  NAT per a les dues xarxes per verificar que tornen a tenir connectivitat a l'exterior.
 
+- Estructurra:
 ```
 [isx48144165@walid ~]$ docker network create mynet yournet
 [isx48144165@walid ~]$ docker run --rm --name host1A -h host1A --net mynet --privileged -d welharrak/iptables
@@ -91,7 +92,7 @@ Activar NAT per a dues xarxes internes, en aquest cas xarxes docker:
 5. S'obre un port per accedir al port ssh del router si la ip origen és de host2A
 6. Els hosts de la xarxa b no tenen accès a la xarxa a
 
-- Simulació amb docker:
+- Estructura:
 ```
 docker network create A B DMZ
 docker run --rm --name host1A -h host1A --net A --privileged -d welharrak/iptables
@@ -103,6 +104,12 @@ docker run --rm --name dmz2 -h dmz2 --net DMZ --privileged -d welharrak/ldapserv
 ```
 
 ## dmz-2.sh
+- Configurar un host amb dues xarxes privades locals xarxaA i xarxaB i una tercera xarxa DMZ amb servidors: nethost, ldap, kerberos, samba. Implementar-ho amb containers i xarxes docker.
+
+- Exercicis:
+1. Des d'un host exterior accedir al servei ldap de la DMZ. (Ports: 389, 636.)
+2. Des d'un host exterior, engegar un container kclient i obtenir un tiket kerberos del servidor de la DMZ. (Ports: 88, 543, 749.)
+3. Des d'un host exterior muntar un recurs samba del servidor de la DMZ. (Ports: 139, 445)
 
 ## drop.sh
 - Tanquem tot
