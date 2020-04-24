@@ -1,4 +1,4 @@
-# IPTABLES
+# IPTABLES - Walid el Harrak
 ## default.sh
 - Accions bàsiques de configuració d'un script de iptables:
 1. Esborar les regles (flush) i comptadors actuals
