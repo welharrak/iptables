@@ -55,7 +55,7 @@ Activar NAT per a dues xarxes internes, en aquest cas xarxes docker:
 - Eliminar totes les regles de iptables aplicant l'script default.sh
 - Una vegada eliminades les regles, no tenen connexió a l'exterior. Haurem d'aplicar el  NAT per a les dues xarxes per verificar que tornen a tenir connectivitat a l'exterior.
 
-- Estructurra:
+- Estructura:
 ```
 [isx48144165@walid ~]$ docker network create mynet yournet
 [isx48144165@walid ~]$ docker run --rm --name host1A -h host1A --net mynet --cap-add=NET_ADMIN --privileged -d welharrak/iptables
