@@ -58,10 +58,10 @@ Activar NAT per a dues xarxes internes, en aquest cas xarxes docker:
 - Estructurra:
 ```
 [isx48144165@walid ~]$ docker network create mynet yournet
-[isx48144165@walid ~]$ docker run --rm --name host1A -h host1A --net mynet --privileged -d welharrak/iptables
-[isx48144165@walid ~]$ docker run --rm --name host1B -h host1B --net mynet --privileged -d welharrak/iptables
-[isx48144165@walid ~]$ docker run --rm --name host2A -h host2A --net yournet --privileged -d welharrak/iptables
-[isx48144165@walid ~]$ docker run --rm --name host2B -h host2B --net yournet --privileged -d welharrak/iptables
+[isx48144165@walid ~]$ docker run --rm --name host1A -h host1A --net mynet --cap-add=NET_ADMIN --privileged -d welharrak/iptables
+[isx48144165@walid ~]$ docker run --rm --name host1B -h host1B --net mynet --cap-add=NET_ADMIN --privileged -d welharrak/iptables
+[isx48144165@walid ~]$ docker run --rm --name host2A -h host2A --net yournet --cap-add=NET_ADMIN --privileged -d welharrak/iptables
+[isx48144165@walid ~]$ docker run --rm --name host2B -h host2B --net yournet --cap-add=NET_ADMIN --privileged -d welharrak/iptables
 ```
 
 ## forwarding.sh
@@ -95,12 +95,12 @@ Activar NAT per a dues xarxes internes, en aquest cas xarxes docker:
 - Estructura:
 ```
 docker network create A B DMZ
-docker run --rm --name host1A -h host1A --net A --privileged -d welharrak/iptables
-docker run --rm --name host2B -h host2B --net A --privileged -d welharrak/iptables
-docker run --rm --name host1A -h host1A --net B --privileged -d welharrak/iptables
-docker run --rm --name host2B -h host2B --net B --privileged -d welharrak/iptables
-docker run --rm --name dmz1 -h dmz1 --net DMZ --privileged -d welharrak/iptables
-docker run --rm --name dmz2 -h dmz2 --net DMZ --privileged -d welharrak/ldapserver19:latest
+docker run --rm --name host1A -h host1A --net A --cap-add=NET_ADMIN --privileged -d welharrak/iptables
+docker run --rm --name host2B -h host2B --net A --cap-add=NET_ADMIN --privileged -d welharrak/iptables
+docker run --rm --name host1A -h host1A --net B --cap-add=NET_ADMIN --privileged -d welharrak/iptables
+docker run --rm --name host2B -h host2B --net B --cap-add=NET_ADMIN --privileged -d welharrak/iptables
+docker run --rm --name dmz1 -h dmz1 --net DMZ --cap-add=NET_ADMIN --privileged -d welharrak/iptables
+docker run --rm --name dmz2 -h dmz2 --net DMZ --cap-add=NET_ADMIN --privileged -d welharrak/ldapserver19:latest
 ```
 
 ## dmz-2.sh
